@@ -92,15 +92,17 @@ Your function should accept:
 (1) an array 
 (2) an index
 
-For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully. */
+For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert 
+has been added successfully. */
 
 function getFlavorByIndex(array, index){
-return (array, index);
+console.log(array, [index]);
 }
-console.log(getFlavorByIndex(originalFlavors[2]));
-/* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on 
-flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove 
-that flavor from the array. 
+getFlavorByIndex(originalFlavors[2]);
+
+/* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to 
+remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. 
+Your task is to get an index by flavor name, and remove that flavor from the array. 
 
 Your function should accept: 
 
@@ -108,17 +110,25 @@ Your function should accept:
 (2) a string (flavor)
 
 
-For example, removeFlavorByName(originalFlavors, "Vanilla") would return an array with the length 30 including all of the flavors except Vanilla. 
+For example, removeFlavorByName(originalFlavors, "Vanilla") would return an array with the length 30 including 
+all of the flavors except Vanilla. 
 
 Hint: You can use .splice() for this
 
 */
 
-// function removeFlavorByName(array,flavor){
+function removeFlavorByName(array,flavor){
+    for (let i =0; i < array.length; i++){
+        if (array[i] === flavor){
+            array.splice(i, 1);
+        }
+    }
+     return array;
+}
 
-//     return array.splice();
+console.log(removeFlavorByName(originalFlavors, "Vanilla"));
 
-// }
+
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. 
@@ -130,12 +140,17 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy(array, array){
-
-    return array.concat(array);
-
+function copy(array, array2){
+// array2 = [...array]
+for (let i=0; i < array.length; i++){
+    array2.push(array[i]);
 }
-console.log(copy(originalFlavors,originalFlavors));
+return array2;
+}
+console.log(copy(originalFlavors,[])); 
+
+
+
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. 
 Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. 
 Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". 
@@ -148,18 +163,25 @@ Your function should accept:
 
 and return a new array. 
 
-For example, filterByWord(originalFlavors, "Chocolate") should return ["Chocolate", "Chocolate Almond",..."Chocolate Ribbon"].
+For example, filterByWord(originalFlavors, "Chocolate") should return ["Chocolate", "Chocolate Almond",...
+"Chocolate Ribbon"].
 
 DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
 function filterByWord(array, flavor){
+    let array2 = [];
+    for (let i = 0; i < array.length; i++){
+        if (array[i].includes(flavor)){
+            array2.push(array[i])
+        }
 
-    return originalFlavors.includes("Chocolate", 0);
-
+    }
+    return array2
+    
 }
-
+console.log(filterByWord(originalFlavors, "Chocolate"));
 
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
