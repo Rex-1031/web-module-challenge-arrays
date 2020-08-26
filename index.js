@@ -117,11 +117,16 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(/*code here*/){
-
-    /*code here*/
+function removeFlavorByName(arr, flavor){
+for(let i = 0; i < arr.length; i++){
+    if(arr[i] === flavor){
+         arr.splice(i, 1);
+    }
+}
+    return arr;
 
 }
+console.log(removeFlavorByName(originalFlavors, "Vanilla"));
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
@@ -132,11 +137,21 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy(/*code here*/){
-
-    /*code here*/
+const newArr = [] 
+    
+function copy(arr1, arr2){
+    
+   arr2 = [...arr1];
+   return arr2;
+    
 
 }
+
+console.log(copy(originalFlavors, []));
+
+
+
+
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
@@ -153,12 +168,16 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-function filterByWord(/*code here*/){
-
-    /*code here*/
-
+function filterByWord(arr, flavor){
+    let flavArr = [];
+    for(let i =0; i < arr.length; i++){
+        if(arr[i].includes(flavor)){
+            flavArr.push(arr[i]);
+        }
+    }
+    return flavArr;
 }
-
+console.log(filterByWord(originalFlavors, "Chocolate"));
 
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
@@ -173,12 +192,14 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
-
-    /*code here*/
-
+function getAverageWordLength(arr){
+    let avWord = 0;
+    for(let i =0; i < arr.length; i++){
+        avWord+=arr[i].length;
+    }
+    return avWord/arr.length;
 }
-
+console.log(getAverageWordLength(originalFlavors));
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
@@ -261,8 +282,12 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
+function getRandomFlavors(arr1, arr2, arr3, arr4){
 
-    /*code here*/
-
+    let randomFlavors = [arr1[Math.floor(Math.random()*arr1.length)] +  arr2[Math.floor(Math.random()*arr2.length)] + arr3[Math.floor(Math.random()*arr3.length)] + arr4[Math.floor(Math.random()*arr4.length)] ];
+    for(let i = 0; i < 32; i++){
+     randomFlavors++;
+    }
+    return randomFlavors;
 }
+console.log(getRandomFlavors(originalFlavors,newFlavors,seasonalFlavors,regionalFlavors));
